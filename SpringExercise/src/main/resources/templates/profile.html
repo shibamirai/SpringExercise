@@ -2,13 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>入力</title>
+<title>表示</title>
 </head>
 <body>
 	<table>
 		<tr>
 			<th>名前</th>
-			<td th:text="${name}"></td>
+			<td th:text="${inputForm.name}"></td>
+		</tr>
+		<tr>
+			<th>誕生日</th>
+			<td th:text="${#dates.format(inputForm.birthday, 'YYYY/MM/dd')}"></td>
+		</tr>
+		<tr>
+			<th>性別</th>
+			<td th:text="${inputForm.gender}"></td>
+		</tr>
+		<tr>
+			<th>血液型</th>
+			<td th:text="${inputForm.bloodType}"></td>
+		</tr>
+		<tr>
+			<th>学習内容</th>
+			<td>
+				<th:block th:each="subject : ${inputForm.subjects}">
+					<span th:text="${subject}"></span>
+				</th:block>
+			</td>
+		</tr>
+		<tr>
+			<th>備考</th>
+			<td><pre th:text="${inputForm.note}"></pre></td>
 		</tr>
 	</table>
 </body>
