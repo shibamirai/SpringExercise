@@ -5,7 +5,7 @@
 <title>入力</title>
 </head>
 <body>
-	<form>
+	<form method="post" th:action="@{/input}">
 		<label for="name">名前</label>
 		<input type="text" name="name" id="name" th:value="${name}">
 		<input type="submit" value="送信">
