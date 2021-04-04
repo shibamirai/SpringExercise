@@ -13,6 +13,7 @@
 
 		<label for="birthday">誕生日</label>
 		<input type="date" id="birthday" th:field="*{birthday}">
+ 		<p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
 		<br>
 
 		<label>性別</label>
@@ -41,6 +42,7 @@
 
 		<label for="note">備考</label>
 		<textarea id="note" th:field="*{note}"></textarea>
+ 		<p th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></p>
 		<br>
 
 		<input type="submit" value="送信">

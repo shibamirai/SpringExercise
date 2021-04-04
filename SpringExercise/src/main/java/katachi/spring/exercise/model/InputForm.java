@@ -2,12 +2,17 @@ package katachi.spring.exercise.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class InputForm {
 
 	private String name;
 
+	@NotNull
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birthday;
 
@@ -17,6 +22,8 @@ public class InputForm {
 
 	private String[] subjects;
 
+	@NotBlank
+	@Size(max=100)
 	private String note;
 
 	public String getName() {
