@@ -35,4 +35,7 @@ public class UserService {
 		return userDao.insert(user) > 0 ? true : false;
 	}
 
+	public boolean delete(int id) {
+		return userDao.delete(id) > 0 ? true : false;
+	}
 }

@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -67,6 +68,13 @@ public class UserController {
 					Locale.getDefault()));
 			return getAdd(form, model);
 		}
+		return "redirect:/user";
+	}
+
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") int id) {
+		System.out.println("id=" + id);
+		userService.delete(id);
 		return "redirect:/user";
 	}
 

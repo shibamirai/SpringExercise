@@ -11,4 +11,5 @@ public interface UserDao {
 	public List<User> selectAll() throws DataAccessException;
 	public int countByName(String name) throws DataAccessException;
 	public int insert(User user) throws DataAccessException;
+	public int delete(int id) throws DataAccessException;
 }

@@ -22,6 +22,7 @@ public class UserDaoJdbc implements UserDao {
 			+ " JOIN team ON user.team_id = team.team_id";
 	private final String COUNT_BY_NAME = "SELECT COUNT(*) FROM user WHERE name = ?";
 	private final String INSERT = "INSERT INTO user(team_id, name) VALUES(?, ?)";
+	private final String DELETE = "DELETE FROM user WHERE id = ?";
 
 	@Override
 	public List<User> selectAll() throws DataAccessException {
@@ -48,6 +49,11 @@ public class UserDaoJdbc implements UserDao {
 	@Override
 	public int insert(User user) throws DataAccessException {
 		return jdbc.update(INSERT, user.getTeamId(), user.getName());
+	}
+
+	@Override
+	public int delete(int id) throws DataAccessException {
+		return jdbc.update(DELETE, id);
 	}
 
 }
