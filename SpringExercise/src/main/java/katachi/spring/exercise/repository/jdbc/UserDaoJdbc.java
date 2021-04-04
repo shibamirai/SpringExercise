@@ -20,6 +20,8 @@ public class UserDaoJdbc implements UserDao {
 
 	private final String SELECT_ALL = "SELECT user.id as id, user.name as name, team.name as teamname FROM user"
 			+ " JOIN team ON user.team_id = team.team_id";
+	private final String COUNT_BY_NAME = "SELECT COUNT(*) FROM user WHERE name = ?";
+	private final String INSERT = "INSERT INTO user(team_id, name) VALUES(?, ?)";
 
 	@Override
 	public List<User> selectAll() throws DataAccessException {
@@ -36,6 +38,16 @@ public class UserDaoJdbc implements UserDao {
 			userList.add(user);
 		}
 		return userList;
+	}
+
+	@Override
+	public int countByName(String name) throws DataAccessException {
+		return jdbc.queryForObject(COUNT_BY_NAME, Integer.class, name);
+	}
+
+	@Override
+	public int insert(User user) throws DataAccessException {
+		return jdbc.update(INSERT, user.getTeamId(), user.getName());
 	}
 
 }

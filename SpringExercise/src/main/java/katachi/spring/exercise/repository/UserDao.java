@@ -9,4 +9,6 @@ import katachi.spring.exercise.model.User;
 public interface UserDao {
 
 	public List<User> selectAll() throws DataAccessException;
+	public int countByName(String name) throws DataAccessException;
+	public int insert(User user) throws DataAccessException;
 }
