@@ -3,9 +3,9 @@
 <meta charset="UTF-8">
 <title>入力</title>
 <body>
- 	<form>
+ 	<form th:action="@{/input}" method="post">
 		<label for="name" class="form-label">名前</label>
-		<input type="text" id="name" th:value="${name}">
+		<input type="text" id="name" name="name" th:value="${name}">
 		<input type="submit">
 	</form>
  </body>
