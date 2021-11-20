@@ -2,14 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <title>表示</title>
 </head>
 <body>
-	<table>
-		<tr>
-			<th>名前</th>
-			<td th:text="${name}"></td>
-		</tr>
-	</table>
+	<div class="container">
+		<table class="table">
+			<tbody>
+				<tr>
+					<th scope="row">名前</th>
+					<td th:text="${inputForm.name}"></td>
+				</tr>
+				<tr>
+					<th scope="row">誕生日</th>
+					<td th:text="${#dates.format(inputForm.birthday, 'YYYY/MM/dd')}"></td>
+				</tr>
+				<tr>
+					<th scope="row">性別</th>
+					<td th:text="${inputForm.gender}"></td>
+				</tr>
+				<tr>
+					<th scope="row">血液型</th>
+					<td th:text="${inputForm.bloodType}"></td>
+				</tr>
+				<tr>
+					<th scope="row">学習内容</th>
+					<td>
+						<th:block th:each="subject : ${inputForm.subjects}">
+							<span th:text="${subject}"></span>
+						</th:block>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">備考</th>
+					<td>
+						<textarea th:text="${inputForm.note}"
+								class="form-control-plaintext" readonly></textarea>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

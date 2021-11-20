@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <title>入力</title>
 <body>
- 	<form th:action="@{/input}" method="post">
-		<label for="name" class="form-label">名前</label>
-		<input type="text" id="name" name="name" th:value="${name}">
-		<input type="submit">
-	</form>
+	<div class="container">
+	 	<form th:action="@{/input}" method="post" th:object="${inputForm}">
+			<div class="mt-3 mb-3">
+				<label for="name" class="form-label">名前</label>
+				<input type="text" th:field="*{name}" class="form-control">
+			</div>
+			<div class="mb-3">
+				<label for="birthday" class="form-label">誕生日</label>
+				<input type="date" th:field="*{birthday}" class="form-control">
+			</div>
+			<div class="mb-3">
+				<div class="form-label">性別</div>
+				<div class="form-check-inline" th:each="item : ${radioGender}">
+					<input type="radio" th:value="${item}" th:field="*{gender}">
+					<label class="form-check-label" th:text="${item}"></label>
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="bloodType" class="form-label">血液型</label>
+				<select id="bloodType" th:field="*{bloodType}" class="form-control">
+					<option th:each="item : ${selectBlood}" th:text="${item}"
+							th:value="${item}"></option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<div class="form-label">学習内容</div>
+				<div th:each="item : ${checkSubject}" class="form-check-inline">
+					<input type="checkbox" th:value="${item}" th:field="*{subjects}"
+							class="form-check-input">
+					<label class="form-check-label" th:text="${item}"></label>
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="note" class="form-label">備考</label>
+				<textarea th:field="*{note}" class="form-control"></textarea>
+			</div>
+			<input type="submit">
+		</form>
+	</div>
  </body>
 </html>
