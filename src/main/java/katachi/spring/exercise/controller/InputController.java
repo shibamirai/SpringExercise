@@ -2,6 +2,7 @@ package katachi.spring.exercise.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,9 +31,13 @@ public class InputController {
 	}
 
 	@PostMapping
-	public String postInput(@ModelAttribute @Validated InputForm form, Model model) {
+	public String postInput(@ModelAttribute @Validated InputForm form,
+			BindingResult bindingResult, Model model) {
 
 		log.info(form.toString());
+		if (bindingResult.hasErrors()) {
+			return getInput(form, model);
+		}
 
 		return "profile";
 	}
