@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 <title>入力</title>
 <body>
  	<form>
 		<label for="name" class="form-label">名前</label>
-		<input type="text" id="name">
+		<input type="text" id="name" th:value="${name}">
 		<input type="submit">
 	</form>
  </body>
