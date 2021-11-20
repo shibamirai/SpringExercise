@@ -50,10 +50,4 @@
       #{team.id}
     )
   </insert>
-
-  <!-- ユーザー削除 -->
-  <delete id="deleteOne">
-    delete from users where id = #{id}
-  </delete>
-
 </mapper>
