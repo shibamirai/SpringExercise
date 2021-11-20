@@ -12,4 +12,5 @@ public interface UserMapper {
 	public List<User> findAll();
 	public void insertOne(User user);
 	public int count(String name);
+	public void deleteOne(int id);
 }

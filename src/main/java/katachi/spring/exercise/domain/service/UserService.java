@@ -11,4 +11,5 @@ public interface UserService {
 	public List<Team> getTeams();
 	public boolean isExist(String userName);
 	public void register(User user);
+	public void delete(int id);
 }

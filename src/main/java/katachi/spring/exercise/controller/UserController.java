@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -75,6 +76,15 @@ public class UserController {
 
 		// ユーザー追加
 		userService.register(user);
+
+		return "redirect:/user";
+	}
+
+	@GetMapping("/del/{id}")
+	public String getDelete(@PathVariable int id) {
+
+		// ユーザー削除
+		userService.delete(id);
 
 		return "redirect:/user";
 	}
