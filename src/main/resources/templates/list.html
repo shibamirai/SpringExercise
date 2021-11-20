@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<title th:text="#{list.title}"></title>
+<body>
+	<div class="container">
+		<h1 th:text="#{list.title}" class="text-center mt-3"></h1>
+		<table class="table mt-3">
+			<thead>
+				<tr>
+					<th scope="col" th:text="#{userId}" class="col-sm-2"></th>
+					<th scope="col" th:text="#{userName}"></th>
+					<th scope="col" th:text="#{teamName}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${users}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.name}"></td>
+					<td th:text="${user.team.name}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

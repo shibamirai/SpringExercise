@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="katachi.spring.exercise.repository.UserMapper">
+
+  <!-- マッピング定義(User) -->
+  <resultMap type="katachi.spring.exercise.domain.model.User" id="user">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <association property="team" resultMap="team" columnPrefix="team_" />
+  </resultMap>
+
+  <!-- マッピング定義(Team) -->
+  <resultMap type="katachi.spring.exercise.domain.model.Team" id="team">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+  </resultMap>
+
+  <!-- ユーザー複数件取得 -->
+  <select id="findAll" resultMap="user">
+    select
+      users.id,
+      users.name,
+      teams.id as team_id,
+      teams.name as team_name
+    from
+      users
+      left join teams
+        on users.team_id = teams.id
+  </select>
+
+  <!-- ユーザー存在確認 -->
+  <select id="count" resultType="int">
+    select
+      count(*)
+    from
+      users
+    where
+      name = #{name}
+  </select>
+
+  <!-- ユーザー１件登録 -->
+  <insert id="insertOne">
+    insert into users(
+      name,
+      team_id
+    ) values (
+      #{name},
+      #{team.id}
+    )
+  </insert>
+
+  <!-- ユーザー削除 -->
+  <delete id="deleteOne">
+    delete from users where id = #{id}
+  </delete>
+
+</mapper>
