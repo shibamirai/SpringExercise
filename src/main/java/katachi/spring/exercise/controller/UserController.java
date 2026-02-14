@@ -57,7 +57,7 @@ public class UserController {
 			BindingResult bindingResult, Model model, Locale locale) {
 
 		log.debug(form.toString());
-		if (!userService.isExist(form.getName())) {
+		if (userService.isExist(form.getName())) {
 			// addError()を使うとformのフィールドが初期化されて入力値が消えてしまうのでrejectValue()を使う
 			//
 			// bindingResult.addError(new FieldError("userAddForm",

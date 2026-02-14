@@ -35,6 +35,8 @@
 						class="form-control" th:errorclass="is-invalid">
 					<option th:each="item : ${selectBlood}" th:text="${item}" th:value="${item}"></option>
 				</select>
+				<div class="text-danger" th:if="${#fields.hasErrors('bloodType')}"
+						th:errors="*{bloodType}"></div>
 			</div>
 			<div class="mb-3">
 				<div class="form-label" th:text="#{subjects}"></div>

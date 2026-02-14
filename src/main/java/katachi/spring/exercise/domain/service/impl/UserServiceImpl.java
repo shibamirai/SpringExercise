@@ -32,10 +32,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean isExist(String userName) {
-		if (userMapper.count(userName) > 0) {
-			return false;
-		}
-		return true;
+		return userMapper.count(userName) > 0;
 	}
 
 	@Override
